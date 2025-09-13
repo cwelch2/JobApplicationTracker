@@ -123,6 +123,7 @@ def logout():
 
 # route for home page
 @app.route('/', methods=['GET', 'POST'])
+@login_required
 def index():
     # only fetch user's non-archived jobs
     jobs = Job.query.filter_by(archived=False, user_id=current_user.id).all()
