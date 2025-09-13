@@ -34,7 +34,6 @@ coverage.xml
 # Flask / local files
 instance/
 *.db      
-migrations/ 
 
 # Environment variables
 .env
