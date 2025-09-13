@@ -1,0 +1,36 @@
+<!-- Base for main pages (current jobs and archive) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <a href="/" rel="Home Page"><h1>Application Tracker</h1></a>
+
+            <!-- Navigation tabs in header -->
+            <div class="header-tabs-wrapper">
+                <div class="header-tabs">
+                    <a href="/" rel="Home Page"><h4>Home</h4></a>
+                    <a href="/archived" rel="Archived Page"><h4>Archive</h4></a>
+                    <a href="/logout" rel="Logout" class="logout"><h4>Logout</h4></a>
+                </div>
+            </div>
+
+        </header>
+
+        <!-- Main content of page -->
+        <div class="page-content">
+            {% block body %}{% endblock %}
+        </div>
+
+        <footer><a href="https://github.com/cwelch2/JobApplicationTracker"><h5>GitHub</h5></a></footer>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- User registration page -->
+{% extends "auth_base.html" %}
+
+{% block head %}
+<title>Register</title>
+{% endblock %}
+
+{% block body %}
+<div class="form-container">
+    <h2>Create Account</h2>
+    <!-- Registration form -->
+    <form action="/register" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <br>
+        <button type="submit" class="register-btn">Register</button>
+    </form>
+
+    <!-- Link to login page -->
+    <p>Already have an account? <a href="/login" class="auth-action">Log in</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+<!-- Search bar above table -->
+<input type="text" id="search-bar" placeholder="Search jobs..." onkeyup="filterJobs()">
+
+<!-- Jobs table -->
+<table>
+    <tr>
+        <th>Position</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Date Added</th>
+        <th>Status</th>
+    </tr>
+    <!-- Iterate through jobs and display the ones that match the archive filter  -->
+    {% for job in jobs %}
+        {% if show_archived and job.archived or not show_archived and not job.archived %}
+        <tr class="job-row">
+            <!-- Make the title clickable if job has a link attached -->
+            {% if job.link %}
+            <td class="job-title-cell"><a href="{{ job.link }}" target="_blank" class="job-link-table"><strong>{{ job.title }}</strong></a></td>
+            {% else %}
+            <td class="job-title-cell">{{ job.title }}</td>
+            {% endif %}
+
+            <td>{{ job.company }}</td>
+            <td>{{ job.location }}</td>
+            <td>{{ job.date_created.strftime('%m-%d-%Y') }}</td>
+
+            <!-- Job status dropdown -->
+            <td>
+                <form action="/update-status/{{ job.id }}" method="POST" id="job-status-table">
+                    {% include '_status_dropdown.html' %}
+                </form>
+            </td>
+
+            <!-- Options menu (toggle button and options) -->
+            <td>
+                <div class="options-container">
+                    <button class="options-btn" onclick="toggleOptionsMenu(event, {{ job.id }})">⋮</button>
+                    <div class="options-menu" data-menu-id="{{ job.id }}">
+                        <button class="option-link" onclick="openEditModal({{ job.id }}, '{{ job.title }}', '{{ job.company }}', '{{ job.location }}', '{{ job.status }}', '{{ job.link }}')">Edit</button>
+                        <button class="option-link" onclick="openDeleteModal({{ job.id }})">Delete</button>
+                        <button class="option-link" onclick="window.location.href='/toggle-archive/{{ job.id }}'">
+                            {% if job.archived %}Unarchive{% else %}Archive{% endif %}
+                        </button>
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+
+
+<!-- Delete confirmation modal -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h3>Are you sure you want to delete this job?</h3>
+        <form id="deleteForm" method="POST">
+            <div class="modal-buttons">
+                <button type="button" onclick="closeDeleteModal()" class="cancel-btn">Cancel</button>
+                <button type="submit" class="delete-confirm">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Edit button modal -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <h2>Edit Job</h2>
+        <form id="editForm" method="POST">
+            <input type="hidden" name="id" id="edit-job-id">
+
+            <!-- Editable fields -->
+            <input type="text" name="title" id="edit-title" required>
+            <input type="text" name="company" id="edit-company" required>
+            <input type="text" name="location" id="edit-location" required>
+
+            <!-- Status dropdown (edited dynamically with JS so _status_dropdown.html isn't used) -->
+            <select name="status" id="edit-status" class="status-select">
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Offer Received">Offer Received</option>
+                <option value="Denied">Denied</option>
+            </select>
+
+            <input type="text" name="link" id="edit-link" placeholder="Link (optional)">
+            
+            <div class="modal-buttons">
+                <button type="button" onclick="closeEditModal()" class="cancel-btn">Cancel</button>
+                <button type="submit" class="submit-btn"><strong>Save</strong></button>
+            </div>
+        </form>
+    </div>
+</div>

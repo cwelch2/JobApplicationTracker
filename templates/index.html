@@ -1,0 +1,37 @@
+<!-- Main page (current jobs) -->
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Current Jobs</title>
+{% endblock %}
+
+{% block body %}
+<div class="current-jobs">
+    <h2>Current Jobs</h2>
+    {% if jobs %}
+        {% set show_archived = False %}
+        {% include '_job_table.html' %}
+    <!-- Add job button -->
+    <button onclick="openAddJobModal()" class="add-job-btn">+</button>
+    {% else %}
+        <h3 class="no-job-message">No current jobs yet. Add one now!</h3>
+        <button onclick="openAddJobModal()" class="add-job-btn-none">+</button>
+    {% endif %}
+    <br>
+</div>
+
+<!-- Add job modal -->
+<div id="addJobModal" class="modal">
+    <div class="modal-content">
+        <h2>Add New Job</h2>
+        <form action="/add" method="POST">
+            <input type="text" name="title" placeholder="Job Title" required>
+            <input type="text" name="company" placeholder="Company" required>
+            <input type="text" name="location" placeholder="Location" required>
+            {% include '_status_dropdown.html' %}
+            <input type="text" name="link" placeholder="Link (optional)">
+            <button type="submit" class="submit-btn"><strong>Add Job</strong></button>
+        </form>
+    </div>
+</div>
+{% endblock %}

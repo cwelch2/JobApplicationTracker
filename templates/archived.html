@@ -1,0 +1,21 @@
+<!-- Archived jobs page -->
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Archived Jobs</title>
+{% endblock %}
+
+{% block body %}
+<div class="archived-jobs">
+    <h2>Archived Jobs</h2>
+    {% if jobs %}
+        {% set show_archived = True %}
+
+        {% include '_job_table.html' %}
+    {% else %}
+        <h3 class="no-job-message">No archived jobs yet.</h3>
+    {% endif %}
+
+    <br>
+</div>
+{% endblock %}

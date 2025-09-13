@@ -1,0 +1,303 @@
+
+html, body {
+    height: 100%;
+    margin:0;
+    background-color: #F1F3F4;
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+
+/* Layout */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+
+header {
+    width: 100%;
+    margin: 20px 20px -10px 20px;
+}
+
+header+h1 {
+    margin: 0;   /* avoids double spacing */
+}
+
+.header-tabs-wrapper {
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;  
+}
+
+.header-tabs {
+    display: flex;
+    gap: 20px; 
+    justify-content: flex-start; 
+    align-items: center;
+    padding-left: 20px; 
+}
+
+.header-tabs .logout {
+    margin: 0 20px 0 auto;     /* push logout button to right */
+}
+
+.page-content {
+    min-height:100vh;
+    background-color: #ffffff;
+    border-radius: 20px 20px 0 0 ;
+    max-width: 1500px;
+    width: 100%;
+}
+
+footer {
+    background: #babfc3;
+    padding: 1rem;
+    width: 100%;
+    position: sticky;
+    text-align: left;
+    align-self: stretch;
+}
+
+/* Auth page */
+.auth-fields {
+    background-color: white;
+    padding: 6em;
+    border-radius: 25px;
+}
+
+.auth-action {
+    text-decoration: underline;
+}
+
+.flash-messages {
+    color: #A50E0E;
+}
+
+.no-job-message {
+    display: inline;
+}
+
+/* Search bar */
+input {
+    border: none;
+    border-radius: 25px;
+    padding: 0.25rem 0.5rem; 
+    background-color: #dadcdc;
+    transition: background-color 0.2s ease;
+}
+
+input:hover {
+    background-color: #acacac;
+}
+
+#search-bar {
+    width: 35vh;
+    margin-bottom: 10px;
+}
+
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+td {
+    padding: 7px 0;
+    border-bottom: 1px solid #aaa;
+}
+
+.job-title-cell {
+    padding: 1px 5px;              
+    vertical-align: middle;        
+}
+
+.job-link-table {
+    display: inline-block;         /* so transform works */
+    transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.job-link-table:hover {
+    border-radius: 5px;
+    background-color: #d8d9d9;
+    transform: scale(1.25);
+}
+
+/* Status dropdown */
+.status-select {
+    border-radius: 25px;      
+    padding: 0.25rem 0.5rem;  
+    border: 0;   
+    font-weight: bold;
+    background-color: #dadcdc;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.2s ease;    
+}
+
+#job-status-table {
+    display: inline-block;
+    transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+#job-status-table:hover {
+    transform: scale(1.15)
+}
+
+ /* color styling for each status option */
+.status-select.applied { background-color: #d1e7dd; color: #0f5132; }      
+.status-select.interview { background-color: #cff4fc; color: #055160; }    
+.status-select.offer { background-color: #fff3cd; color: #664d03; }       
+.status-select.denied { background-color: #f8d7da; color: #842029; }       
+
+
+/* Modal styling */
+.modal {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* greyed background */
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: fit-content;
+    width: 90%;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Options dropdown */
+.options-container {
+    position: relative;
+    display: inline-block;
+}
+
+.options-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+    transition: background-color 0.2s ease;
+}
+
+.options-btn:hover {
+    border-radius: 5px;
+    background-color: #d8d9d9;
+}
+
+.options-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 0 6px 2px #babfc3;
+    width: fit-content;
+    z-index: 100;      /* keeps options menu on top */
+
+}
+
+.options-menu .option-link {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: white;
+    color: #333;
+}
+
+.option-link {
+    transition: background-color 0.2s ease;
+    border: none;
+    width: 100%;
+}
+
+.option-link:hover {
+    background-color: #d8d9d9;
+}
+
+/* Show menu when .open class is applied */
+.options-menu.open {
+    display: block;
+}
+
+/* Add job buttons */
+.add-job-btn {
+    display: block;
+    border-radius: 8px;
+    border: none;
+    margin: 5px 2.5vw 0 auto;    /* pushes button to the right */
+    font-size: 1.5em;
+    justify-content: left; 
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.add-job-btn-none{
+    border-radius: 8px;
+    border: none;
+    font-size: 1.5em;
+    justify-content: left; 
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+/* Other buttons */
+.login-btn, .register-btn, .submit-btn, .cancel-btn, .delete-confirm{
+    margin: 10px 5px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-btn, .register-btn, .submit-btn, .add-job-btn, .add-job-btn-none {
+    color: white;
+    background-color: #4285F4;
+}
+.login-btn:hover, .register-btn:hover, .submit-btn:hover, 
+.add-job-btn:hover, .add-job-btn-none:hover {
+    background-color: #174EA6;
+}
+
+.cancel-btn {
+    color: black;
+    background-color: #dadcdc;
+}
+
+.cancel-btn:hover {
+    background-color: #9AA0A6;
+}
+
+.delete-confirm {
+    color: white;
+    background-color: #EA4335;
+}
+
+.delete-confirm:hover {
+    background-color: #A50E0E;
+}

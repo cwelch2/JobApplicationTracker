@@ -1,0 +1,36 @@
+<!-- Base for user authentication pages -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <a href="/login" rel="Auth Page"><h1>Application Tracker</h1></a>
+        </header>
+
+        <!-- Main content of page -->
+        <div class="auth-fields">
+            {% block body %}{% endblock %}
+
+            <!-- Display flash messages (wrong password/username, username taken, etc.) -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>
