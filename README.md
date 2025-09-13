@@ -45,7 +45,7 @@ A web application to help you track your job applications, statuses, and archive
    ```sh
    python app.py
    ```
-   The app will be available at [http://localhost:5000](http://localhost:5000).
+   The app will be available at [http://localhost:8000](http://localhost:8000).
 
 ## Database Migrations
 
