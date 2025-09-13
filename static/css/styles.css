@@ -32,6 +32,13 @@ header+h1 {
     margin: 0;   /* avoids double spacing */
 }
 
+.logged-in-info {
+    font-weight: normal;
+    color: #555;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
 .header-tabs-wrapper {
     max-width: 1500px;
     width: 100%;
