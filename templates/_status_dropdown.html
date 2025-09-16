@@ -8,7 +8,6 @@
     
     {% if job is defined %}onchange="this.form.submit()"{% endif %}> 
 
-    
      <!-- Default to Applied if no job exists -->
     <option value="Applied" {% if job is not defined or job.status == 'Applied' %}selected{% endif %}>Applied</option>
     <option value="Interview" {% if job is defined and job.status == 'Interview' %}selected{% endif %}>Interview</option>
