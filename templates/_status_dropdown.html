@@ -1,11 +1,13 @@
 <!-- Dropdown menu for job status -->
-<select name="status" class="status-select" 
-    {% if job is defined and job.status == 'Applied' %}applied{% endif %}
-    {% if job is defined and job.status == 'Interview' %}interview{% endif %}
-    {% if job is defined and job.status == 'Offer Received' %}offer{% endif %}
-    {% if job is defined and job.status == 'Denied' %}denied{% endif %}" 
+<select name="status" 
+    class="status-select
+    {% if job is defined and job.status == 'Applied' %} applied{% endif %}
+    {% if job is defined and job.status == 'Interview' %} interview{% endif %}
+    {% if job is defined and job.status == 'Offer Received' %} offer{% endif %}
+    {% if job is defined and job.status == 'Denied' %} denied{% endif %}"
     
     {% if job is defined %}onchange="this.form.submit()"{% endif %}> 
+
     
      <!-- Default to Applied if no job exists -->
     <option value="Applied" {% if job is not defined or job.status == 'Applied' %}selected{% endif %}>Applied</option>
