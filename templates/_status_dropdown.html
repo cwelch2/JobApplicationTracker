@@ -1,5 +1,5 @@
 <!-- Dropdown menu for job status -->
-<select name="status" class="status-select 
+<select name="status" class="status-select" 
     {% if job is defined and job.status == 'Applied' %}applied{% endif %}
     {% if job is defined and job.status == 'Interview' %}interview{% endif %}
     {% if job is defined and job.status == 'Offer Received' %}offer{% endif %}

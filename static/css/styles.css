@@ -152,6 +152,12 @@ td {
     transition: transform 0.1s ease, background-color 0.2s ease;    
 }
 
+.status-select option {
+    background-color: white;
+    color: #333;
+}
+
+
 #job-status-table {
     display: inline-block;
     transition: transform 0.1s ease, background-color 0.2s ease;
