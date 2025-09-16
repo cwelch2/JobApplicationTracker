@@ -42,8 +42,14 @@ A web application to help you track your job applications, statuses, and archive
 
 
 4. **Run the app:**
+   
+   **Windows**
    ```sh
-   python app.py
+   python app.py 
+   ```
+   **macOS/Linux**
+   ```sh
+   python3 app.py 
    ```
    The app will be available at [http://localhost:8000](http://localhost:8000).
 
@@ -60,10 +66,5 @@ A web application to help you track your job applications, statuses, and archive
 - `instance/`: Local database (ignored by git)
 - `migrations/`: Database migration scripts
 
-## License
-
-MIT License
-
----
-
+##
 For questions or contributions, visit the [GitHub repository](https://github.com/cwelch2/JobApplicationTracker).
